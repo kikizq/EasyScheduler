@@ -58,6 +58,8 @@ public class MailUtils {
 
     public static final String mailPasswd = getString(Constants.MAIL_PASSWD);
 
+    public static final String mailUsername = getString(Constants.MAIL_USERNAME);
+
     public static final Boolean mailUseStartTLS = getBoolean(Constants.MAIL_SMTP_STARTTLS_ENABLE);
 
     public static final Boolean mailUseSSL = getBoolean(Constants.MAIL_SMTP_SSL_ENABLE);
@@ -376,7 +378,7 @@ public class MailUtils {
          * if you need authentication information, set authentication: username-password.
          * The registered name and password of the sender on the mail server respectively
          */
-        email.setAuthentication(mailSender, mailPasswd);
+        email.setAuthentication(mailUsername, mailPasswd);
 
         /**
          * the subject of the message to be sent
