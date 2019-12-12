@@ -17,15 +17,25 @@
 package cn.escheduler.alert.utils;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+
+import static org.apache.poi.ss.usermodel.FillPatternType.DIAMONDS;
+import static org.apache.poi.ss.usermodel.FillPatternType.SOLID_FOREGROUND;
+
 
 /**
  * excel utils
@@ -75,12 +85,33 @@ public class ExcelUtils {
                HSSFRow row = sheet.createRow(0);
                //set the height of the first line
                row.setHeight((short)500);
+               // set the border style
+               HSSFCellStyle cellStyle= wb.createCellStyle();
+               cellStyle.setBorderBottom(BorderStyle.THIN);
+               cellStyle.setBorderLeft(BorderStyle.THIN);
+               cellStyle.setBorderRight(BorderStyle.THIN);
+               cellStyle.setBorderTop(BorderStyle.THIN);
+
+               HSSFFont fontStyle=wb.createFont();
+               fontStyle.setFontName("宋体");
+               fontStyle.setFontHeightInPoints((short)9);
+               cellStyle.setFont(fontStyle);
+
+               HSSFCellStyle cellStyle1= wb.createCellStyle();
+               cellStyle1.cloneStyleFrom(cellStyle);
+               cellStyle1.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
+               cellStyle1.setFillPattern(SOLID_FOREGROUND);
+
+
+
+
 
 
                //setting excel headers
                for (int i = 0; i < headerList.size(); i++) {
                    HSSFCell cell = row.createCell(i);
                    cell.setCellValue(headerList.get(i));
+                   cell.setCellStyle(cellStyle1);
                }
 
                //setting excel body
@@ -93,7 +124,12 @@ public class ExcelUtils {
                    rowIndex++;
                    for (int j = 0 ; j < values.length ; j++){
                        HSSFCell cell1 = row.createCell(j);
-                       cell1.setCellValue(String.valueOf(values[j]));
+                       if (values[j]==null){
+                           cell1.setCellValue("");
+                       }else {
+                           cell1.setCellValue(String.valueOf(values[j]));
+                       }
+                       cell1.setCellStyle(cellStyle);
                    }
                }
 

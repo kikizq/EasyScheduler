@@ -297,15 +297,16 @@ public class SqlTask extends AbstractTask {
                     }
 
                     logger.debug("execute sql : {}", JSONObject.toJSONString(resultJSONArray, SerializerFeature.WriteMapNullValue));
+//                    logger.info("execute sql : {}", JSONObject.toJSONStringWithDateFormat(resultJSONArray, "yyyy-MM-dd HH:mm:ss" ,SerializerFeature.WriteMapNullValue));
 
                     // if there is a result set
                     if (resultJSONArray.size() > 0) {
                         if (StringUtils.isNotEmpty(sqlParameters.getTitle())) {
                             sendAttachment(sqlParameters.getTitle(),
-                                    JSONObject.toJSONString(resultJSONArray, SerializerFeature.WriteMapNullValue));
+                                JSONObject.toJSONStringWithDateFormat(resultJSONArray, "yyyy-MM-dd HH:mm:ss" ,SerializerFeature.WriteMapNullValue));
                         }else{
                             sendAttachment(taskProps.getNodeName() + " query resultsets ",
-                                    JSONObject.toJSONString(resultJSONArray, SerializerFeature.WriteMapNullValue));
+                                JSONObject.toJSONStringWithDateFormat(resultJSONArray, "yyyy-MM-dd HH:mm:ss" ,SerializerFeature.WriteMapNullValue));
                         }
                     }
 

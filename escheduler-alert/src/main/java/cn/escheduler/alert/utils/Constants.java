@@ -63,6 +63,8 @@ public class Constants {
 
     public static final String MAIL_SMTP_SSL_ENABLE = "mail.smtp.ssl.enable";
 
+    public static final String MAIL_SMTP_SSL_TRUST="mail.smtp.ssl.trust";
+
     public static final String TEXT_HTML_CHARSET_UTF_8 = "text/html;charset=utf-8";
 
     public static final String STRING_TRUE = "true";

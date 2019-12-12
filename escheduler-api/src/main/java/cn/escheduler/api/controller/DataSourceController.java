@@ -94,7 +94,7 @@ public class DataSourceController extends BaseController {
                                    @RequestParam(value = "host") String host,
                                    @RequestParam(value = "port") String port,
                                    @RequestParam(value = "database") String database,
-                                   @RequestParam(value = "principal") String principal,
+                                   @RequestParam(value = "principal", required = false) String principal,
                                    @RequestParam(value = "userName") String userName,
                                    @RequestParam(value = "password") String password,
                                    @RequestParam(value = "other") String other) {

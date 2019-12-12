@@ -277,6 +277,7 @@ public class TaskQueueZkImpl extends AbstractZKClient implements ITaskQueue {
         String tasksQueuePath = getTasksPath(key) + Constants.SINGLE_SLASH;
         String taskIdPath = tasksQueuePath + nodeValue;
         logger.info("consume task {}", taskIdPath);
+
         try{
             Stat stat = zk.checkExists().forPath(taskIdPath);
             if(stat != null){
