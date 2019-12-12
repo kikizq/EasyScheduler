@@ -49,11 +49,13 @@ public class Constants {
 
     public static final String MAIL_PASSWD = "mail.passwd";
 
-    public static final String MAIL_USERNAME = "mail.username";
+    public static final String MAIL_USER = "mail.user";
 
     public static final String XLS_FILE_PATH = "xls.file.path";
 
     public static final String MAIL_HOST = "mail.host";
+
+    public static final String MAIL_PORT = "mail.smtp.port";
 
     public static final String MAIL_SMTP_AUTH = "mail.smtp.auth";
 
