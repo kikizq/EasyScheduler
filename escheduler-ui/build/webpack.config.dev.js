@@ -82,6 +82,7 @@ const config = merge.smart(baseConfig, {
     hot: true,
     contentBase: assetsDir,
     publicPath: baseConfig.output.publicPath,
+    // publicPath: "/git/EasyScheduler/escheduler-ui/",
     port: getEnv('DEV_PORT', 8888),
     host: getEnv('DEV_HOST', 'localhost'),
     noInfo: false,
